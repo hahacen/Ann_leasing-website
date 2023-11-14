@@ -1,0 +1,21 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 54.160.152.222:80...
+* Connected to 54.160.152.222 (54.160.152.222) port 80 (#0)
+> GET / HTTP/1.1
+> Host: 54.160.152.222
+> User-Agent: curl/8.0.1
+> Accept: */*
+> Cookie: login=eyJ1c2VybmFtZSI6ImF3ZGVvcmlvIn0.ZSi1kQ.njh_WO10XmzLUm4kvywlGew5E40
+> 
+< HTTP/1.1 200 OK
+< Server: nginx/1.18.0 (Ubuntu)
+< Date: Fri, 13 Oct 2023 03:13:13 GMT
+< Content-Type: text/html; charset=utf-8
+< Content-Length: 602
+< Connection: keep-alive
+< Vary: Cookie
+< 
+{ [602 bytes data]
+100   602  100   602    0     0   5972      0 --:--:-- --:--:-- --:--:--  6020
+* Connection #0 to host 54.160.152.222 left intact

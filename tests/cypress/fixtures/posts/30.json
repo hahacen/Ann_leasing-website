@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "commentid": 146,
+      "lognameOwnsThis": false,
+      "owner": "nwein",
+      "ownerShowUrl": "/users/nwein/",
+      "text": "Look at my bread",
+      "url": "/api/v1/comments/146/"
+    },
+    {
+      "commentid": 147,
+      "lognameOwnsThis": true,
+      "owner": "awdeorio",
+      "ownerShowUrl": "/users/awdeorio/",
+      "text": "Nice bread",
+      "url": "/api/v1/comments/147/"
+    },
+    {
+      "commentid": 148,
+      "lognameOwnsThis": false,
+      "owner": "japplefield",
+      "ownerShowUrl": "/users/japplefield/",
+      "text": "I want to eat that bread",
+      "url": "/api/v1/comments/148/"
+    },
+    {
+      "commentid": 149,
+      "lognameOwnsThis": false,
+      "owner": "jkloosterman",
+      "ownerShowUrl": "/users/jkloosterman/",
+      "text": "My bread is better",
+      "url": "/api/v1/comments/149/"
+    },
+    {
+      "commentid": 150,
+      "lognameOwnsThis": false,
+      "owner": "nwein",
+      "ownerShowUrl": "/users/nwein/",
+      "text": "No",
+      "url": "/api/v1/comments/150/"
+    }
+  ],
+  "comments_url": "/api/v1/comments/?postid=30",
+  "created": "2022-09-18 09:18:36",
+  "imgUrl": "/uploads/0d02a5a4bb6b460abf9160522ad9d324.png",
+  "likes": {
+    "lognameLikesThis": true,
+    "numLikes": 9,
+    "url": "/api/v1/likes/180/"
+  },
+  "owner": "nwein",
+  "ownerImgUrl": "/uploads/4ef62485e76c4320af6085ac7822cc57.png",
+  "ownerShowUrl": "/users/nwein/",
+  "postShowUrl": "/posts/30/",
+  "postid": 30,
+  "url": "/api/v1/posts/30/"
+}

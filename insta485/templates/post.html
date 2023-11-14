@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div><a href="/">insta485</a></div>
+            <div><a href="/explore/">explore</a></div>
+            <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+        </header>
+        <div class="post">
+                <a href="/users/{{post.owner}}/">
+                    <img src="/uploads/{{post.userfile}}" width='50' alt="{{post.owner}}'s profile picture">
+                    {{ post.owner }}
+                </a>
+                <img src="/uploads/{{post.filename}}" width='400' alt="Post image">
+                <p><a href="/posts/{{post.postid}}/">{{post.created}} </a></p>
+                <br>
+
+                {% if not post.like_status %}
+                <form action="{{ url_for('like_button') }}?target={{ url_for('show_post', postid_url_slug=post.postid) }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="like"/>
+                    <input type="hidden" name="postid" value="{{post.postid}}"/>
+                    <input type="submit" name="like" value="like"/>
+                </form>
+                {% else %}
+                <form action="{{ url_for('like_button') }}?target={{ url_for('show_post', postid_url_slug=post.postid) }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="operation" value="unlike"/>
+                    <input type="hidden" name="postid" value="{{post.postid}}"/>
+                    <input type="submit" name="unlike" value="unlike"/>
+                </form>
+                {% endif %}
+                <br>
+                {% if post.owner == logname %}
+                <form action="{{ url_for('post_operation') }}?target={{ url_for('show_user_page', user_url_slug = logname) }}" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="operation" value="delete"/>
+                  <input type="hidden" name="postid" value="{{post.postid}}"/>
+                  <input type="submit" name="delete" value="delete this post"/>
+                </form>
+                {% endif %}
+                <p>
+                {% if post.num_like == 1 %}
+                    1 like
+                {% else %}
+                    {{ post.num_like }} likes
+                {% endif %}
+                </p>
+                <div class="comments">
+                    {% for comment in post.comments %}
+                        <p>
+                            <a href="/users/{{ comment.owner }}/">{{ comment.owner }}</a> 
+                            {{ comment.text }}
+                        </p>
+                        {% if comment.owner == logname %}
+                             {#TODO:what's the target url?#}
+                                <form action="{{ url_for('comments_button') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                                  <input type="hidden" name="operation" value="delete"/>
+                                  <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
+                                  <input type="submit" name="uncomment" value="delete"/>
+                                </form>
+                        {% endif %}
+                    {% endfor %}
+                    <form action="{{ url_for('comments_button') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="operation" value="create"/>
+                            <input type="hidden" name="postid" value="{{post.postid}}"/>
+                            <input type="text" name="text" required/>
+                            <input type="submit" name="comment" value="comment"/>
+                        </form>
+                </div>
+                <br>
+                
+            </div>
+        
+    
+        
+    </main>
+    
+</body>
+</html>

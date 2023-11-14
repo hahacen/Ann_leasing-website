@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <div><a href="/">insta485</a></div>
+    <div><a href="/explore/">explore</a></div>
+    <div><a href="/users/{{username}}/">{{username}}</a></div>
+    <form action="{{ url_for('accounts') }}?target={{ url_for('show_index') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required placeholder="Upload Profile Picture"/>
+        <input type="text" name="fullname" required placeholder="Full Name"/>
+        <input type="text" name="username" required placeholder="Username"/>
+        <input type="text" name="email" required placeholder="Email"/>
+        <input type="password" name="password" required placeholder="Password"/>
+        <input type="submit" name="signup" value="sign up"/>
+        <input type="hidden" name="operation" value="create"/>
+    </form>
+
+    <!-- Link to the login page -->
+    <p>Already have an account? <a href="/accounts/login/">Log in</a></p>
+
+</body>
+</html>

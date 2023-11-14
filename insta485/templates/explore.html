@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <main>
+    <header>
+        <div><a href="/">insta485</a></div>
+        <div><a href="/explore/">explore</a></div>
+        <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+    </header>
+    <div>Discover People</div>
+    <div class="explore-list">
+        {% for user in not_following %}
+            <div class="user-entry">
+                <!-- User Icon -->
+                <img src="/uploads/{{ user.filename }}" alt="{{ user.username }}'s icon" width="100" class="user-icon">
+    
+                <!-- Username with link -->
+                <a href="/users/{{ user.username }}/">{{ user.username }}</a>
+            </div>
+            <form action="{{ url_for('follower_operation') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="operation" value="follow"/>
+                <input type="hidden" name="username" value= "{{user.username}}"/>
+                <input type="submit" name="follow" value="follow"/>
+            </form>
+        {% endfor %}
+    </div>
+    
+        
+    </main>
+    
+</body>
+</html>

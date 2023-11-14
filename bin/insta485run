@@ -1,0 +1,10 @@
+#!/bin/bash
+
+FILE=var/insta485.sqlite3
+if [ ! -f "$FILE" ]; then
+    echo "Error: can't find database $FILE\n"
+    echo "Try: ./bin/insta485db create"
+    exit 1
+fi
+npx webpack --watch &
+flask --app insta485 --debug run --host 0.0.0.0 --port 8000

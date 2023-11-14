@@ -1,0 +1,5 @@
+# This file lists files to be excluded from Prettier formatting.
+
+**/bundle.js
+**/*.js.map
+**/*.html

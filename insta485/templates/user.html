@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <header>
+        <div><a href="/">insta485</a></div>
+        <div><a href="/explore/">explore</a></div>
+        <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+    </header>
+    <main>
+        <div class="user">
+            <p>{{ userinfo.username }}</p>
+            <div class="relationship">
+                {% if logname == userinfo.username %}
+                    <a href="/accounts/edit/">Edit profile</a>
+                    <br>
+                    <form action= "{{ url_for('accounts_logout') }}" method="post" enctype="multipart/form-data">
+                      <input type="submit" name="logout" value="Logout"/>
+                    </form>
+                    <br>
+                    {#upload file here#}
+                    <form action="{{ url_for('post_operation') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                      <input type="file" name="file" accept="image/*" required/>
+                      <input type="submit" name="create_post" value="upload new post"/>
+                      <input type="hidden" name="operation" value="create"/>
+                    </form>
+                {% else %}
+                    {% if userinfo.following_status %}
+                        following
+                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                        <form action="{{url_for('follower_operation')}}?target={{request.url}}" method="post" enctype="multipart/form-data">
+                          <input type="submit" name="unfollow" value="unfollow"/>
+                          <input type="hidden" name="username" value="{{userinfo.username}}"/>
+                          <input type="hidden" name="operation" value="unfollow"/>
+                        </form>
+                    {% else %}
+                        not following
+                        <!-- DO NOT CHANGE THIS (aside from where we say 'FIXME') -->
+                        <form action="{{url_for('follower_operation')}}?target={{request.url}}" method="post" enctype="multipart/form-data">
+                          <input type="submit" name="follow" value="follow"/>
+                          <input type="hidden" name="username" value="{{userinfo.username}}"/>
+                          <input type="hidden" name="operation" value="follow"/>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <p>
+            <br>
+                {% if userinfo.post_cnt == 1 %}
+                    1 post
+                {% else %}
+                    {{ userinfo.post_cnt }} posts
+                {% endif %}
+                {% if userinfo.follower_cnt == 1 %}
+                    <a href="/users/{{ userinfo.username }}/followers/">1 follower</a>
+                {% else %}
+                    <a href="/users/{{ userinfo.username }}/followers/">{{ userinfo.follower_cnt }} followers</a>
+                {% endif %}
+                    <a href="/users/{{ userinfo.username }}/following/">{{ userinfo.following_cnt }} following</a>
+            <br>
+            </p>
+
+            <p>
+                {{ userinfo.fullname }}
+            </p>
+            <!-- Posts by the user -->
+        <div class="user-posts">
+            {% if userinfo.post_cnt != 0 %}
+                {% for post in userinfo.post_path %}
+                    <div class="post">
+                        <a href="/posts/{{ post.postid }}/">
+                            <img src="/uploads/{{ post.filename }}" alt="Post by {{ userinfo.username }}" width="400">
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div><p>No posts yet.</p></div>
+            {% endif %}
+        </div>
+        </div>
+    </main>
+</body>
+</html>

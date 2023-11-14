@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <div><a href="/">insta485</a></div>
+    <div><a href="/explore/">explore</a></div>
+    <div><a href="/users/{{username}}/">{{username}}</a></div>
+    <div>
+    <img src="/uploads/{{ user.filename }}" width="50" alt="User's profile photo">
+    <b>{{ username }}</b>
+    </div>
+
+<form action="{{ url_for('accounts') }}?target={{ url_for('accounts_edit') }}" method="post" enctype="multipart/form-data">
+    <label>Photo</label>
+    <input type="file" name="file" accept="image/*"/>
+    
+    <label>Name</label>
+    <input type="text" name="fullname" value="{{ user.fullname }}" required/>
+    
+    <label>Email</label>
+    <input type="text" name="email" value="{{ user.email }}" required/>
+
+    <input type="submit" name="update" value="submit"/>
+    <input type="hidden" name="operation" value="edit_account"/>
+</form>
+
+<div>
+    <a href="/accounts/password/">Change Password</a>
+</div>
+<div>
+    <a href="/accounts/delete/">Delete Account</a>
+</div>
+
+</body>
+</html>

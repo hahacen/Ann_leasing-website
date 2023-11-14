@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <main>
+    <header>
+        <a href="/">insta485</a>
+        <div><a href="/explore/">explore</a></div>
+        <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+    </header>
+    <div class="follower-list">
+        <p> Followers </p>
+        {% for user in follower_user %}
+            <div class="user-entry">
+                <!-- User Icon -->
+                <img src="/uploads/{{ user.fn }}" alt="{{ user.un }}'s icon" class="user-icon" width="100">
+    
+                <!-- Username with link -->
+                <a href="/users/{{ user.un }}/">{{ user.un }}</a>
+    
+                <!-- Relationship with logged-in user -->
+                {% if logname == user.un %}
+                    <!-- Do not display any relationship text if logged-in user is the same as the user in the list -->
+                {% elif user.follower_status %}
+                    <span>following</span>
+                    <form action="{{ url_for('follower_operation') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="operation" value="unfollow"/>
+                        <input type="hidden" name="username" value= "{{user.un}}"/>
+                        <input type="submit" name="unfollow" value="unfollow"/>
+                    </form>
+                {% else %}
+                    <span>not following</span>
+                    <form action="{{ url_for('follower_operation') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="operation" value="follow"/>
+                        <input type="hidden" name="username" value= "{{user.un}}"/>
+                        <input type="submit" name="follow" value="follow"/>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>

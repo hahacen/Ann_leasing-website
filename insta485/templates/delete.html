@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insta485</title>
+</head>
+<body>
+    <div><a href="/">insta485</a></div>
+    <div><a href="/explore/">explore</a></div>
+    <div><a href="/users/{{username}}/">{{username}}</a></div>
+<div class="confirmation">
+    <p>{{ username }}</p>
+    <form action="{{ url_for('accounts') }}?target={{ url_for('accounts_create') }}" method="post" enctype="multipart/form-data">
+        <input type="submit" name="delete" value="confirm delete account"/>
+        <input type="hidden" name="operation" value="delete"/>
+    </form>
+</div>
+
+</body>
+</html>

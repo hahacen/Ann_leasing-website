@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -Eeuo pipefail
+
+pycodestyle insta485
+pydocstyle insta485
+pylint insta485
+pytest -v tests
+npx eslint --ext jsx insta485/js
+npx prettier --check insta485/js
