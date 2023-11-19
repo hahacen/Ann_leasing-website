@@ -50,28 +50,6 @@
                     {{ post.num_like }} likes
                 {% endif %}
                 </p>
-                <div class="comments">
-                    {% for comment in post.comments %}
-                        <p>
-                            <a href="/users/{{ comment.owner }}/">{{ comment.owner }}</a> 
-                            {{ comment.text }}
-                        </p>
-                        {% if comment.owner == logname %}
-                             {#TODO:what's the target url?#}
-                                <form action="{{ url_for('comments_button') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
-                                  <input type="hidden" name="operation" value="delete"/>
-                                  <input type="hidden" name="commentid" value="{{comment.commentid}}"/>
-                                  <input type="submit" name="uncomment" value="delete"/>
-                                </form>
-                        {% endif %}
-                    {% endfor %}
-                    <form action="{{ url_for('comments_button') }}?target={{ request.url }}" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="operation" value="create"/>
-                            <input type="hidden" name="postid" value="{{post.postid}}"/>
-                            <input type="text" name="text" required/>
-                            <input type="submit" name="comment" value="comment"/>
-                        </form>
-                </div>
                 <br>
                 
             </div>

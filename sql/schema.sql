@@ -14,34 +14,26 @@ CREATE TABLE posts(
   postid INTEGER PRIMARY KEY AUTOINCREMENT,
   filename VARCHAR(64) NOT NULL,
   owner VARCHAR(20) NOT NULL,
+  apartment VARCHAR(20) NOT NULL,
+  price VARCHAR(40) NOT NULL,
+  address VARCHAR(40) NOT NULL,
   created DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY(owner) REFERENCES users(username) ON DELETE CASCADE /* borrow the index from user (not really for indexing), do not have to clarify the reference if the index name is the same */
 );
 
-CREATE TABLE following(
-  username1 VARCHAR(20) NOT NULL,
-  username2 VARCHAR(20) NOT NULL,
-  created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY(username1, username2),
-  FOREIGN KEY(username1) REFERENCES users(username) ON DELETE CASCADE,
-  FOREIGN KEY(username2) REFERENCES users(username) ON DELETE CASCADE
-);
-
-CREATE TABLE comments(
-  commentid INTEGER PRIMARY KEY AUTOINCREMENT,
-  owner VARCHAR(20) NOT NULL,
-  postid INTEGER NOT NULL,
-  text VARCHAR(1024) NOT NULL,
-  created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(owner) REFERENCES users(username) ON DELETE CASCADE,
-  FOREIGN KEY(postid) REFERENCES posts ON DELETE CASCADE
-);
-
-CREATE TABLE likes (
-  likeid INTEGER PRIMARY KEY AUTOINCREMENT,
-  owner VARCHAR(20) NOT NULL,
+CREATE TABLE starred_posts(
+  starid INTEGER PRIMARY KEY AUTOINCREMENT,
+  username VARCHAR(20) NOT NULL,
   postid INTEGER NOT NULL,
   created DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(owner) REFERENCES users(username) ON DELETE CASCADE,
-  FOREIGN KEY(postid) REFERENCES posts ON DELETE CASCADE
-)
+  FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE,
+  FOREIGN KEY(postid) REFERENCES posts(postid) ON DELETE CASCADE
+);
+
+CREATE TABLE apartment(
+    apartmentid INTEGER PRIMARY KEY AUTOINCREMENT,
+    apartment VARCHAR(40) NOT NULL,
+    description  VARCHAR(40) NOT NULL,
+    filename ARCHAR(64) NOT NULL,
+    link VARCHAR(40) NOT NULL
+);

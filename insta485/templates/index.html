@@ -6,13 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insta485</title>
+    <style>
+        header {
+            background-color: #f8f9fa; /* Light grey background */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+            padding: 10px 0;
+            font-family: Arial, sans-serif;
+        }
+        .header-container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-container a {
+            text-decoration: none;
+            color: #ffcb05; /* Bootstrap primary color */
+            font-size: 18px;
+        }
+        .header-container a:hover {
+            color: #00274c; /* Darker shade for hover effect */
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <div><a href="/">insta485</a></div>
-        <div><a href="/explore/">explore</a></div>
-        <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+        <div class="header-container">
+            <div><a href="/">home</a></div>
+            <div><a href="/explore/">explore</a></div>
+            <div><a href="/users/{{logname}}/">{{logname}}</a></div>
+        </div>
     </header>
 
     <div id="reactEntry">

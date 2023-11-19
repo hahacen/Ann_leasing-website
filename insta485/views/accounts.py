@@ -22,11 +22,11 @@ from insta485.api.service_api import requires_auth, raise_forbidden
 def require_login():
     """Give the guest user list they can visit."""
     # List of routes that don't require authentication
-    whitelist = ['/accounts/login/', '/accounts/create/', '/accounts/auth/']
+    whitelist = ['/accounts/login/', '/accounts/create/', '/accounts/auth/', '/']
 
     def is_exempted_route(path):
         """Check if the path is among the exempted routes."""
-        exempted_starts = ["/uploads/", "/api/v1/", "/insta485/static/"]
+        exempted_starts = ["/uploads/", "/api/v1/", "/insta485/static/", "/uploads/logo-removebg.jpg"]
         return any(
             path.startswith(route_start) for route_start in exempted_starts
             )
@@ -49,7 +49,7 @@ def accounts_login():
     return flask.render_template("login.html",)
 
 
-@insta485.app.route('/accounts/logout/', methods=['POST'])
+@insta485.app.route('/accounts/logout/')
 def accounts_logout():
     """Accept POST request to /accounts/logout/."""
     flask.session.clear()

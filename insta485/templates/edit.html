@@ -4,36 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insta485</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            background-color: #f6f6f6;
+        }
+        nav {
+            display: flex;
+            gap: 1em;
+        }
+        nav a {
+            color: #00274c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffcb05;
+        }
+        {#header a {#}
+        {#    text-decoration: none;#}
+        {#    color: #00274c;#}
+        {#    font-weight: bold;#}
+        {#}#}
+
+        header .logo {
+            height: 110px;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-top: 1em;
+        }
+
+        .user-info img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .user-info b {
+            display: block;
+            margin-top: 0.5em;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 2em auto;
+            padding: 2em;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin: 0.5em 0;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="file"] {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form input[type="submit"] {
+            background-color: #0056B3;
+            color: white;
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #003f8a;
+        }
+
+        .account-actions {
+        text-align: right;
+        margin-top: 20px;
+        }
+
+        .account-actions a {
+            display: inline-block;
+            margin-right: 1em;
+            color: #0056B3;
+            text-decoration: none;
+        }
+
+        .account-actions a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div><a href="/">insta485</a></div>
-    <div><a href="/explore/">explore</a></div>
-    <div><a href="/users/{{username}}/">{{username}}</a></div>
-    <div>
-    <img src="/uploads/{{ user.filename }}" width="50" alt="User's profile photo">
-    <b>{{ username }}</b>
+    <header>
+        <a href="/">
+            <img src="/uploads/logo-removebg.jpg" alt="Ann Leasing Logo" class="logo" />
+        </a>
+        <nav>
+            <a href="/explore/">explore</a>
+            <a href="/users/{{username}}/">{{username}}</a>
+        </nav>
+    </header>
+    <div class="user-info">
+        <img src="/uploads/{{ user.filename }}" alt="User's profile photo">
+        <b>{{ username }}</b>
     </div>
 
-<form action="{{ url_for('accounts') }}?target={{ url_for('accounts_edit') }}" method="post" enctype="multipart/form-data">
-    <label>Photo</label>
-    <input type="file" name="file" accept="image/*"/>
-    
-    <label>Name</label>
-    <input type="text" name="fullname" value="{{ user.fullname }}" required/>
-    
-    <label>Email</label>
-    <input type="text" name="email" value="{{ user.email }}" required/>
+    <form action="{{ url_for('accounts') }}?target={{ url_for('accounts_edit') }}" method="post" enctype="multipart/form-data">
+        <label for="file">Photo</label>
+        <input id="file" type="file" name="file" accept="image/*"/>
 
-    <input type="submit" name="update" value="submit"/>
-    <input type="hidden" name="operation" value="edit_account"/>
-</form>
+        <label for="fullname">Name</label>
+        <input id="fullname" type="text" name="fullname" value="{{ user.fullname }}" required/>
 
-<div>
-    <a href="/accounts/password/">Change Password</a>
-</div>
-<div>
-    <a href="/accounts/delete/">Delete Account</a>
-</div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" value="{{ user.email }}" required/>
 
+        <input type="submit" name="update" value="Submit"/>
+        <input type="hidden" name="operation" value="edit_account"/>
+    </form>
+
+    <div class="account-actions">
+        <a href="/accounts/password/">Change Password</a>
+        <a href="/accounts/delete/">Delete Account</a>
+    </div>
 </body>
 </html>

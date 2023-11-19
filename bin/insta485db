@@ -37,9 +37,8 @@ case $1 in
     ;;
 
   "dump")
-    sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM comments'
-    sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM following'
-    sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM likes'
+    sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM apartment'
+    sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM starred_posts'
     sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM posts'
     sqlite3 -batch -line var/insta485.sqlite3 'SELECT * FROM users'
     ;;

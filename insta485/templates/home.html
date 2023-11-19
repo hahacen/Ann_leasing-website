@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ann Leasing - Apartments</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(246, 246, 246); /* Adjust the background color as needed */
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        background-color: rgb(246, 246, 246); /* Adjust the background color as needed */
+    }
+    .logo {
+        height: 110px; /* Set the size of your logo */
+    }
+    .search-container {
+        flex-grow: 1; /* Allows the search container to grow */
+        display: flex;
+        justify-content: center; /* Centers the search bar */
+    }
+    .search-input {
+    width: 50%; /* Adjust the width to your preference */
+    padding: 12px 24px;
+    background-color: transparent;
+    transition: padding 250ms ease-in-out, background-position 250ms ease-in-out;
+    font-size: 14px;
+    line-height: 18px;
+    color: #00274c;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 97% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    margin: 0 auto; /* Add this to center the search bar if it's not full width */
+    flex-grow: 0; /* Remove flex-grow if you don't want it to expand */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+    .search-input:hover,
+    .search-input:focus {
+        border-color: #ffcb05; /* Color transition for the search bar */
+    }
+    nav {
+        display: flex;
+        gap: 1em;
+    }
+    nav a {
+        color: #00274c;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    nav a:hover {
+        color: #ffcb05;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .campus {
+        width: 100%; /* Or set a specific width if you want to limit the size */
+        text-align: center; /* This will center the text of the h2 */
+        margin-bottom: 2em;
+    }
+
+    .apartment {
+        margin-bottom: 1em;
+        text-align: center; /* This will center the text of the paragraph */
+    }
+
+     .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #00274c;
+    }
+    .dropbtn {
+        color: #00274c; /* Normal text color */
+        padding: 14px 16px;
+        font-size: 16px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        color: #ffcb05;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <a href="/">
+        <img src="/uploads/logo-removebg.jpg" alt="Ann Leasing Logo" class="logo"/>
+        </a>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/rent">Rent</a>
+            <a href="/post_lease/">Post</a>
+            <div class="dropdown">
+            <a href="/users/{{ users }}/" class="dropbtn">
+                {% if if_login %}
+                Profile
+                {% else %}
+                Login
+                {% endif %}
+            </a>
+            {% if if_login %}
+            <div class="dropdown-content">
+{#                <a href="/accounts/login/">Log in</a>#}
+                <a href="/starred_posts">Starred posts</a>
+                <a href="/my_posts">My posts</a>
+                <a href="/accounts/edit/">Edit account</a>
+                <a href="/accounts/logout/">Log out</a>
+            </div>
+            {% endif %}
+        </div>
+        </nav>
+    </header>
+    <main>
+        <div class="campus">
+            <h2>NORTH CAMPUS</h2>
+            <div class="apartment">
+                <img src="willowtree.jpg" alt="WillowTree Apartments">
+                <p>WillowTree Apartments</p>
+            </div>
+            <div class="apartment">
+                <img src="courtyards.jpg" alt="Courtyards Apartments">
+                <p>Courtyards Apartments</p>
+            </div>
+            <div class="apartment">
+                <img src="traverheights.jpg" alt="Traver Heights">
+                <p>Traver Heights</p>
+            </div>
+        </div>
+        <div class="campus">
+            <h2>CENTRAL CAMPUS</h2>
+            <div class="apartment">
+                <img src="theyards.jpg" alt="The Yards">
+                <p>The Yards</p>
+            </div>
+            <div class="apartment">
+                <img src="thehub.jpg" alt="The Hub">
+                <p>The Hub</p>
+            </div>
+            <div class="apartment">
+                <img src="varsity.jpg" alt="Varsity">
+                <p>Varsity</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Placeholder for any JavaScript you might want to add
+        document.querySelector('.search-bar').addEventListener('input', (event) => {
+            // Code to filter or search apartments
+            console.log(event.target.value);
+        });
+    </script>
+</body>
+</html>
