@@ -145,6 +145,22 @@
         .dropdown:hover .dropbtn {
             color: #ffcb05;
         }
+
+        button {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, #2980b9, #3498db);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -171,8 +187,8 @@
                 {% if if_login %}
                 <div class="dropdown-content">
                     {# <a href="/accounts/login/">Log in</a>#}
-                    <a href="/starred_posts/">Starred posts</a>
-                    <a href="/my_posts/">My posts</a>
+                    <a href="/starred_posts">Starred posts</a>
+                    <a href="/my_posts">My posts</a>
                     <a href="/accounts/edit/">Edit account</a>
                     <a href="/accounts/logout/">Log out</a>
                 </div>
@@ -181,36 +197,45 @@
         </nav>
     </header>
     <main>
-        <div class="campus">
-            <h2>NORTH CAMPUS</h2>
-            <div class="apartment">
-                <img src="/uploads/varsity.jpg" alt="WillowTree Apartments">
-                <p>WillowTree Apartments</p>
+        <div class="campus" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <h2 style="text-align: center; width: 100%;">NORTH CAMPUS</h2>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/willowtree.webp" alt="WillowTree Apartments" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">WillowTree
+                        Apartments</button></a>
             </div>
-            <div class="apartment">
-                <img src="/uploads/courtyard.jpg" alt="Courtyards Apartments">
-                <p>Courtyards Apartments</p>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/courtyard.jpg" alt="Courtyards Apartments" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">Courtyards
+                        Apartments</button></a>
             </div>
-            <div class="apartment">
-                <img src="/uploads/traverhight.jpg" alt="Traver Heights">
-                <p>Traver Heights</p>
-            </div>
-        </div>
-        <div class="campus">
-            <h2>CENTRAL CAMPUS</h2>
-            <div class="apartment">
-                <img src="/uploads/theyard.jpg" alt="The Yards">
-                <p>The Yards</p>
-            </div>
-            <div class="apartment">
-                <img src="/uploads/thehub.jpg" alt="The Hub">
-                <p>The Hub</p>
-            </div>
-            <div class="apartment">
-                <img src="/uploads/varsity.jpg" alt="Varsity">
-                <p>Varsity</p>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/traverheights.jpg" alt="Traver Heights" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">Traver Heights</button></a>
             </div>
         </div>
+        <div class="campus" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <h2 style="text-align: center; width: 100%;">CENTRAL CAMPUS</h2>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/theyards.webp" alt="The Yards" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">The Yards</button></a>
+            </div>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/thehub.webp" alt="The Hub" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">The Hub</button></a>
+            </div>
+            <div class="apartment" style="text-align: center; flex-basis: calc(33.33% - 20px); margin-bottom: 20px;">
+                <img src="/uploads/varsity.jpg" alt="Varsity" style="width: 360px; height: 270px;">
+                <p></p>
+                <a href="/rent/"><button type="button" style="width: 80%; margin: 0 auto;">Varsity</button></a>
+            </div>
+        </div>
+
     </main>
     <script>
         // Placeholder for any JavaScript you might want to add
