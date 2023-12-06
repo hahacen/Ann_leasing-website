@@ -11,6 +11,7 @@ import insta485
 
 @insta485.app.route('/users/<user_url_slug>/')
 def show_user_page(user_url_slug):
+    # TODO: modify database execution
     """Display /users/<user_url_slug>/ route."""
     # Connect to database
     connection = insta485.model.get_db()

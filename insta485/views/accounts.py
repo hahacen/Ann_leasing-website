@@ -53,6 +53,7 @@ def accounts_login():
 def accounts_logout():
     """Accept POST request to /accounts/logout/."""
     flask.session.clear()
+    # TODO：log out redirect to home page
     return flask.redirect(flask.url_for('accounts_login'))
 
 

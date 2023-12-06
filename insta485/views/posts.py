@@ -10,10 +10,11 @@ import uuid
 import arrow
 import flask
 import insta485
-
+# TODO: submit post button
 
 @insta485.app.route('/post_lease/')
 def post_lease():
+
     return flask.render_template("post_lease.html")
 
 
