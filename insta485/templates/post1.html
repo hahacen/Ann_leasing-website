@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Listing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .rental-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+        }
+        .rental-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .rental-info {
+            text-align: left;
+        }
+        .star-icon {
+            cursor: pointer;
+            color: #ccc;
+            font-size: 24px;
+            margin-right: 10px; /* added margin */
+        }
+        .star-icon.active {
+            color: #ffae00; /* color change instead of margin */
+        }
+    </style>
+</head>
+<body>
+    <div class="rental-card">
+        <img src="/uploads/cy1.jpg" alt="Apartment 1" class="rental-image">
+        <div class="rental-info">
+            <h3>Willow Tree Apartment</h3>
+            <p>1819 Willowtree Ln, Ann Arbor, MI  48105</p>
+            <p>type:1b1b in 2b1b</p>
+            <p>Price: $850/month</p>
+            <p class="description">Willowtree Apartments & Tower gives you the student lifestyle you want at a price you can afford in Ann Arbor! You'll love our UMich apartments, amenities for health, fitness, and socialization. </p>
+            <a href="/post1/" class="view-more">View More</a>
+            <span class="star-icon" onclick="toggleStar(this)">☆</span>
+        </div>
+    </div>
+    <script>
+        function toggleStar(element) {
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
