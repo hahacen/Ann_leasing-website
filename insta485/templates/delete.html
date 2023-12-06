@@ -4,18 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>insta485</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(246, 246, 246);
+        }
+
+        a {
+            color: #00274c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ffcb05;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            background-color: rgb(246, 246, 246);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .confirmation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: 1px solid #575756;
+            border-radius: 50px;
+            color: #00274c;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00274c;
+            color: #ffcb05;
+        }
+    </style>
 </head>
 <body>
-    <div><a href="/">insta485</a></div>
-    <div><a href="/explore/">explore</a></div>
-    <div><a href="/users/{{username}}/">{{username}}</a></div>
-<div class="confirmation">
-    <p>{{ username }}</p>
-    <form action="{{ url_for('accounts') }}?target={{ url_for('accounts_create') }}" method="post" enctype="multipart/form-data">
-        <input type="submit" name="delete" value="confirm delete account"/>
-        <input type="hidden" name="operation" value="delete"/>
-    </form>
-</div>
-
+    <header>
+        <div><a href="/">insta485</a></div>
+        <div><a href="/explore/">explore</a></div>
+        <div><a href="/users/{{username}}/">{{username}}</a></div>
+    </header>
+    <div class="confirmation">
+        <p>{{ username }}</p>
+        <form action="{{ url_for('accounts') }}?target={{ url_for('accounts_create') }}" method="post" enctype="multipart/form-data">
+            <input type="submit" name="delete" value="confirm delete account"/>
+            <input type="hidden" name="operation" value="delete"/>
+        </form>
+    </div>
 </body>
 </html>
