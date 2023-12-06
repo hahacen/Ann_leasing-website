@@ -19,7 +19,6 @@ starter_files.tar.xz
 # EECS 485 Project 2
 *.pem
 *.db
-var/
 
 # EECS 485 Project 3
 node_modules/
