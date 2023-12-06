@@ -17,6 +17,9 @@ def post_lease():
 
     return flask.render_template("post_lease.html")
 
+@insta485.app.route('/rent/')
+def rent_page():
+    return flask.render_template("rent.html")
 
 @insta485.app.route('/submit_post/')
 def submit_post():
