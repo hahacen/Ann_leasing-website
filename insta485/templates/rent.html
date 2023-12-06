@@ -206,6 +206,14 @@
         footer {
             /* Copy the footer styling from your main page here */
         }
+
+        .rental-image {
+            width: 100%;
+            height: 200px;
+            /* Set a fixed height for all images */
+            object-fit: cover;
+            /* Maintain aspect ratio and cover the entire container */
+        }
     </style>
 </head>
 
@@ -223,21 +231,14 @@
             <a href="/post_lease/">Post</a>
             <div class="dropdown">
                 <a href="/users/{{ users }}/" class="dropbtn">
-                    {% if if_login %}
                     Profile
-                    {% else %}
-                    Login
-                    {% endif %}
                 </a>
-                {% if if_login %}
                 <div class="dropdown-content">
-                    {# <a href="/accounts/login/">Log in</a>#}
                     <a href="/starred_posts">Starred posts</a>
                     <a href="/my_posts">My posts</a>
                     <a href="/accounts/edit/">Edit account</a>
                     <a href="/accounts/logout/">Log out</a>
                 </div>
-                {% endif %}
             </div>
         </nav>
     </header>
@@ -247,7 +248,7 @@
             <div class="card-container">
                 <!-- Rental Card 1 -->
                 <div class="rental-card">
-                    <img src="/uploads/apartment1.jpg" alt="Apartment 1" class="rental-image">
+                    <img src="/uploads/cy1.jpg" alt="Apartment 1" class="rental-image">
                     <div class="rental-info">
                         <h3>Apartment Name 1</h3>
                         <p>Location: Example Location 1</p>
@@ -259,7 +260,7 @@
 
                 <!-- Rental Card 2 -->
                 <div class="rental-card">
-                    <img src="/uploads/apartment2.jpg" alt="Apartment 2" class="rental-image">
+                    <img src="/uploads/cy2.jpg" alt="Apartment 2" class="rental-image">
                     <div class="rental-info">
                         <h3>Apartment Name 2</h3>
                         <p>Location: Example Location 2</p>
@@ -271,7 +272,7 @@
 
                 <!-- Rental Card 3 -->
                 <div class="rental-card">
-                    <img src="/uploads/apartment2.jpg" alt="Apartment 2" class="rental-image">
+                    <img src="/uploads/cy3.jpg" alt="Apartment 2" class="rental-image">
                     <div class="rental-info">
                         <h3>Apartment Name 2</h3>
                         <p>Location: Example Location 2</p>

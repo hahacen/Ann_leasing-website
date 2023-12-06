@@ -12,6 +12,12 @@ def rent():
     # Connect to the database
     connection = insta485.model.get_db()
 
+    logname = requires_auth()
+    if_login = True
+    if not logname:
+        # return flask.redirect(flask.url_for('accounts_login'))
+        if_login = False
+
     # Get form data
     apartment = flask.request.form['apartment']
     price_range = flask.request.form['priceRange']
@@ -44,4 +50,9 @@ def rent():
 
     # Redirect to the target URL or the user's page if no target URL is provided
     target_url = flask.request.args.get('target', f"/users/{logname}/")
-    return flask.redirect(target_url)
+
+    context = {"users": users,
+               "posts": starred_posts,
+               "logname": logname,
+               "if_login": if_login}
+    return flask.redirect(target_url, **context)

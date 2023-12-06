@@ -5,19 +5,250 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ann Leasing - Rent</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(246, 246, 246);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            background-color: rgb(246, 246, 246);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            height: 110px;
+            /* Set the size of your logo */
+        }
+
+        .search-container {
+            flex-grow: 1;
+            /* Allows the search container to grow */
+            display: flex;
+            justify-content: center;
+            /* Centers the search bar */
+        }
+
+        .search-input {
+            width: 50%;
+            /* Adjust the width to your preference */
+            padding: 12px 24px;
+            background-color: transparent;
+            transition: padding 250ms ease-in-out, background-position 250ms ease-in-out;
+            font-size: 14px;
+            line-height: 18px;
+            color: #00274c;
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 18px 18px;
+            background-position: 97% center;
+            border-radius: 50px;
+            border: 1px solid #575756;
+            margin: 0 auto;
+            /* Add this to center the search bar if it's not full width */
+            flex-grow: 0;
+            /* Remove flex-grow if you don't want it to expand */
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .search-input:hover,
+        .search-input:focus {
+            border-color: #ffcb05;
+            /* Color transition for the search bar */
+        }
+
+        nav {
+            display: flex;
+            gap: 1em;
+        }
+
+        nav a {
+            color: #00274c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffcb05;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .campus {
+            width: 100%;
+            /* Or set a specific width if you want to limit the size */
+            text-align: center;
+            /* This will center the text of the h2 */
+            margin-bottom: 2em;
+        }
+
+        .apartment {
+            margin-bottom: 1em;
+            text-align: center;
+            /* This will center the text of the paragraph */
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #00274c;
+        }
+
+        .dropbtn {
+            color: #00274c;
+            /* Normal text color */
+            padding: 14px 16px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: #ffcb05;
+        }
+
+        .rental-listings {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .rental-listings h2 {
+            color: #00274c;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .rental-card {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 300px;
+        }
+
+        .rental-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .rental-info {
+            padding: 15px;
+        }
+
+        .rental-info h3 {
+            color: #00274c;
+            margin-bottom: 10px;
+        }
+
+        .rental-info p {
+            color: #575756;
+            margin-bottom: 10px;
+        }
+
+        .view-more {
+            padding: 10px 15px;
+            background-color: #ffcb05;
+            color: #00274c;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .view-more:hover {
+            background-color: #00274c;
+            color: #ffcb05;
+        }
+
+        footer {
+            /* Copy the footer styling from your main page here */
+        }
+
+        .rental-image {
+            width: 100%;
+            height: 200px;
+            /* Set a fixed height for all images */
+            object-fit: cover;
+            /* Maintain aspect ratio and cover the entire container */
+        }
+    </style>
 </head>
+
 <body>
     <header>
-        <!-- Copy the header section from your main page here -->
+        <a href="/">
+            <img src="/uploads/logo-removebg.jpg" alt="Ann Leasing Logo" class="logo" />
+        </a>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/rent/">Rent</a>
+            <a href="/post_lease/">Post</a>
+            <div class="dropdown">
+                <a href="/users/{{ users }}/" class="dropbtn">
+                    Profile
+                </a>
+                <div class="dropdown-content">
+                    <a href="/starred_posts">Starred posts</a>
+                    <a href="/my_posts">My posts</a>
+                    <a href="/accounts/edit/">Edit account</a>
+                    <a href="/accounts/logout/">Log out</a>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <section class="rental-listings">
-            <h2>Available Rentals</h2>
+            <h2>Starred Posts</h2>
             <div class="card-container">
                 <!-- Rental Card 1 -->
                 <div class="rental-card">
-                    <img src="/uploads/apartment1.jpg" alt="Apartment 1" class="rental-image">
+                    <img src="/uploads/cy1.jpg" alt="Apartment 1" class="rental-image">
                     <div class="rental-info">
                         <h3>Apartment Name 1</h3>
                         <p>Location: Example Location 1</p>
@@ -29,7 +260,7 @@
 
                 <!-- Rental Card 2 -->
                 <div class="rental-card">
-                    <img src="/uploads/apartment2.jpg" alt="Apartment 2" class="rental-image">
+                    <img src="/uploads/cy2.jpg" alt="Apartment 2" class="rental-image">
                     <div class="rental-info">
                         <h3>Apartment Name 2</h3>
                         <p>Location: Example Location 2</p>
@@ -38,8 +269,6 @@
                         <a href="post2.html" class="view-more">View More</a>
                     </div>
                 </div>
-
-                <!-- Add more cards as needed -->
             </div>
         </section>
     </main>
