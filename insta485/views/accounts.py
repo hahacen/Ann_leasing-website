@@ -26,7 +26,7 @@ def require_login():
 
     def is_exempted_route(path):
         """Check if the path is among the exempted routes."""
-        exempted_starts = ["/uploads/", "/api/v1/", "/insta485/static/", "/uploads/logo-removebg.jpg"]
+        exempted_starts = ["/uploads/", "/api/v1/", "/insta485/static/"]
         return any(
             path.startswith(route_start) for route_start in exempted_starts
             )
