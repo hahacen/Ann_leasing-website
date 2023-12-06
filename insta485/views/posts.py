@@ -20,6 +20,13 @@ def post_lease():
 @insta485.app.route('/rent/')
 def rent_page():
     return flask.render_template("rent.html")
+@insta485.app.route('/starred_posts/')
+def show_star():
+    return flask.render_template("starred_posts.html")
+
+@insta485.app.route('/my_posts/')
+def show_my_post():
+    return flask.render_template("my_posts.html")
 
 @insta485.app.route('/submit_post/')
 def submit_post():
