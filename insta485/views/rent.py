@@ -56,3 +56,6 @@ def rent():
                "logname": logname,
                "if_login": if_login}
     return flask.redirect(target_url, **context)
+@insta485.app.route('/rent_home/')
+def rent_home():
+    return flask.render_template("rent_home.html")

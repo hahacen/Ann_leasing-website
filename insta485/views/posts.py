@@ -23,6 +23,9 @@ def show_post1():
 @insta485.app.route('/rent/')
 def rent_page():
     return flask.render_template("rent.html")
+@insta485.app.route('/rent_home/')
+def rent_home():
+    return flask.render_template("rent_home.html")
 @insta485.app.route('/starred_posts/')
 def show_star():
     return flask.render_template("starred_posts.html")
