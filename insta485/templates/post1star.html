@@ -4,8 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ann Leasing - Rent</title>
+    <title>Apartment Listing</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .rental-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .rental-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .rental-info {
+            text-align: left;
+        }
+
+        .star-icon {
+            cursor: pointer;
+            color: #ccc;
+            font-size: 24px;
+            margin-right: 10px;
+            /* added margin */
+        }
+
+        .star-icon.active {
+            color: #ffae00;
+            /* color change instead of margin */
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -144,55 +178,33 @@
             color: #ffcb05;
         }
 
-        .rental-listings {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-        }
+        /* Retaining original styles and adding enhancements below */
 
-        .rental-listings h2 {
-            color: #00274c;
-        }
-
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Enhanced font-family */
         }
 
         .rental-card {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Adding shadow to rental card */
+            background-color: #fff;
+            /* White background for rental card */
             border-radius: 8px;
-            overflow: hidden;
-            max-width: 300px;
+            /* Rounded corners for rental card */
         }
 
         .rental-image {
-            width: 100%;
-            height: auto;
-        }
-
-        .rental-info {
-            padding: 15px;
-        }
-
-        .rental-info h3 {
-            color: #00274c;
-            margin-bottom: 10px;
-        }
-
-        .rental-info p {
-            color: #575756;
-            margin-bottom: 10px;
+            border-radius: 8px 8px 0 0;
+            /* Rounded top corners for images */
         }
 
         .view-more {
-            padding: 10px 15px;
             background-color: #ffcb05;
+            /* Gold background for buttons */
             color: #00274c;
+            /* Blue text color */
+            padding: 10px 15px;
             text-decoration: none;
             border-radius: 4px;
             transition: background-color 0.3s;
@@ -200,26 +212,75 @@
 
         .view-more:hover {
             background-color: #00274c;
+            /* Blue background on hover */
             color: #ffcb05;
+            /* Gold text color on hover */
         }
 
-        footer {
-            /* Copy the footer styling from your main page here */
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .search-input {
+                width: 70%;
+                /* Wider search bar on smaller screens */
+            }
         }
 
-        .rental-image {
-            width: 100%;
-            height: 200px;
-            /* Set a fixed height for all images */
-            object-fit: cover;
-            /* Maintain aspect ratio and cover the entire container */
+        .star-icon-container {
+            position: fixed;
+            left: 10px;
+            /* Position to the left */
+            top: 50%;
+            /* Center vertically */
+            transform: translateY(-50%);
+            z-index: 100;
+            /* Ensure it's above other content */
+        }
+
+        .star-icon {
+            cursor: pointer;
+            color: #ffcb05;
+            /* Default color */
+            font-size: 30px;
+            /* Larger size for better visibility */
+            transition: color 0.3s;
+            /* Smooth transition for color change */
+        }
+
+        .star-icon:hover,
+        .star-icon.active {
+            color: #ffcb05;
+            /* Highlight color on hover/active */
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <a href=" ">
+        <a href="/">
             <img src="/uploads/logo-removebg.jpg" alt="Ann Leasing Logo" class="logo" />
         </a>
         <div class="search-container">
@@ -234,58 +295,65 @@
             });
         </script>
         <nav>
-            Home
-            Rent
-            Post
+            <a href="/">Home</a>
+            <a href="/rent_home/">Rent</a>
+            <a href="/post_lease/">Post</a>
             <div class="dropdown">
                 <a href="/users/{{ users }}/" class="dropbtn">
                     Profile
                 </a>
                 <div class="dropdown-content">
-                    Starred posts
-                    My posts
-                    Edit account
-                    Log out
+                    <a href="/starred_posts">Starred posts</a>
+                    <a href="/my_posts">My posts</a>
+                    <a href="/accounts/edit/">Edit account</a>
+                    <a href="/accounts/logout/">Log out</a>
                 </div>
             </div>
         </nav>
     </header>
-    <main>
-        <section class="rental-listings">
-            <h2>Starred Posts</h2>
-            <div class="card-container">
-                <!-- Rental Card 1 -->
-                <div class="rental-card">
-                    <img src="/uploads/thehub.jpg" alt="Apartment 1" class="rental-image">
-                    <div class="rental-info">
-                        <h3>Apartment Name 1</h3>
-                        <p>Location: Example Location 1</p>
-                        <p>Price: $1200/month</p>
-                        <p class="description">Brief description of the apartment...</p>
-                        <a href="/post1star/" class="view-more">View More</a>
-                    </div>
-                </div>
 
-                <!-- Rental Card 2 -->
-                <div class="rental-card">
-                    <img src="/uploads/wl4.jpg" alt="Apartment 2" class="rental-image">
-                    <div class="rental-info">
-                        <h3>Apartment Name 2</h3>
-                        <p>Location: Example Location 2</p>
-                        <p>Price: $1000/month</p>
-                        <p class="description">Brief description of the apartment...</p>
-                        <a href="/post1star/" class="view-more">View More</a>
-                    </div>
-                </div>
+    <div class="rental-card">
+        <img src="/uploads/willowtree1.jpg" alt="Apartment 1" class="rental-image">
+        <div class="rental-info">
+            <h3>Willow Tree Apartment</h3>
+            <p>1819 Willowtree Ln, Ann Arbor, MI 48105</p>
+            <p>Type:1b1b in 2b1b</p>
+            <p>Price: $850/month</p>
+            <P>Data: 2023/09/10 - 2023/10/10</P>
+            <p class="description">Willowtree Apartments & Tower gives you the student lifestyle you want at a price you
+                can afford in Ann Arbor! You'll love our UMich apartments, amenities for health, fitness, and
+                socialization. </p>
+            <div class="star-icon-container">
+                <span class="star-icon" onclick="toggleStar(this)">☆</span>
             </div>
-        </section>
-    </main>
-    <footer>
-        <!-- Copy the footer section from your main page here -->
-    </footer>
+            <a href="javascript:void(0);" class="view-more" onclick="showPopup()">Contact</a>
+        </div>
+    </div>
+
+    <!-- Pop-up for contact information -->
+    <div class="popup" id="contactPopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h3>Contact Information</h3>
+            <p>Email: contact@example.com</p>
+            <p>Phone: 123-456-7890</p>
+        </div>
+    </div>
+
     <script>
-        // JavaScript, if necessary
+        function showPopup() {
+            document.getElementById('contactPopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('contactPopup').style.display = 'none';
+        }
+
+        function toggleStar(element) {
+            element.classList.toggle('active');
+        }
     </script>
 </body>
+
 
 </html>

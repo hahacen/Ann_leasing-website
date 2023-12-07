@@ -34,6 +34,10 @@ def show_star():
 def show_my_post():
     return flask.render_template("my_posts.html")
 
+@insta485.app.route('/post1star/')
+def show_my_post():
+    return flask.render_template("post1star.html")
+
 @insta485.app.route('/submit_post/')
 def submit_post():
     # Assuming the user is logged in and their username is stored in session
