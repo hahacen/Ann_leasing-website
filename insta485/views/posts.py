@@ -20,6 +20,10 @@ def post_lease():
 def show_post1():
     return flask.render_template("post1.html")
 
+@insta485.app.route('/post2/')
+def show_post2():
+    return flask.render_template("post2.html")
+
 @insta485.app.route('/rent/')
 def rent_page():
     return flask.render_template("rent.html")
@@ -35,7 +39,7 @@ def show_my_post():
     return flask.render_template("my_posts.html")
 
 @insta485.app.route('/post1star/')
-def show_my_post():
+def show_my_poststar():
     return flask.render_template("post1star.html")
 
 @insta485.app.route('/submit_post/')
