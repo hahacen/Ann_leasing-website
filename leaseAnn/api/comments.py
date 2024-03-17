@@ -1,18 +1,18 @@
 """REST API for comments."""
 import flask
-import insta485
+import leaseAnn
 from .service_api import (requires_auth,
                           raise_forbidden, get_authenticated_db_connection)
 
 
-@insta485.app.route('/api/v1/comments/', methods=['POST'])
+@leaseAnn.app.route('/api/v1/comments/', methods=['POST'])
 def post_comment():
     """Post one comment to postid."""
     # Login check
     logname = requires_auth()
     if not logname:
         return raise_forbidden()
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
 
     postid = flask.request.args.get("postid")
 
@@ -50,7 +50,7 @@ def post_comment():
     return flask.jsonify(comment), 201
 
 
-@insta485.app.route('/api/v1/comments/<commentid>/', methods=['DELETE'])
+@leaseAnn.app.route('/api/v1/comments/<commentid>/', methods=['DELETE'])
 def delete_comment(commentid):
     """Delete the comment by commentid."""
     logname, connection = get_authenticated_db_connection()

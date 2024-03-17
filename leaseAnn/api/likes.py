@@ -1,10 +1,10 @@
 """REST API for likes."""
 import flask
-import insta485
+import leaseAnn
 from .service_api import requires_auth, raise_forbidden
 
 
-@insta485.app.route('/api/v1/likes/<likeid>/', methods=['DELETE'])
+@leaseAnn.app.route('/api/v1/likes/<likeid>/', methods=['DELETE'])
 def delete_like(likeid):
     """Delete a like by its ID."""
     # Login Check
@@ -13,7 +13,7 @@ def delete_like(likeid):
     if not logname:
         return raise_forbidden()
     # Build connection
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
     # 1. Check if the like exists
     cur = connection.execute('SELECT * FROM likes WHERE likeid = ?', (likeid,))
     like = cur.fetchone()
@@ -30,7 +30,7 @@ def delete_like(likeid):
     return '', 204
 
 
-@insta485.app.route('/api/v1/likes/', methods=['POST'])
+@leaseAnn.app.route('/api/v1/likes/', methods=['POST'])
 def like_post():
     """Post a like."""
     logname = requires_auth()
@@ -40,7 +40,7 @@ def like_post():
     postid = flask.request.args.get('postid')
     if not postid:
         return flask.jsonify({"message": "postid required"}), 400
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
     cur = connection.execute(
         "SELECT * FROM likes where postid =? and owner = ?",
         (postid, logname)

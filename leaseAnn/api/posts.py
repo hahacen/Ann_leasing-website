@@ -1,11 +1,11 @@
 """REST API for posts."""
 import flask
-import insta485
+import leaseAnn
 from .service_api import (requires_auth,
                           raise_forbidden, get_authenticated_db_connection)
 
 
-@insta485.app.route('/api/v1/posts/')
+@leaseAnn.app.route('/api/v1/posts/')
 def get_posts():
     """Get posts api."""
     logname = requires_auth()
@@ -39,7 +39,7 @@ def bad_request_response():
 
 def fetch_posts(logname, postid_lte, size, page):
     """Help get post fetch post."""
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
     query, params = construct_query(logname, postid_lte, size, page)
     cur = connection.execute(query, params)
     posts = cur.fetchall()
@@ -109,7 +109,7 @@ def construct_current_url(size, page, postid_lte):
            )
 
 
-@insta485.app.route('/api/v1/posts/<int:postid_url_slug>/')
+@leaseAnn.app.route('/api/v1/posts/<int:postid_url_slug>/')
 def get_post(postid_url_slug):
     """Return post on postid.
 

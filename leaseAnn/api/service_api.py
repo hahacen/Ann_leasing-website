@@ -1,12 +1,12 @@
 """REST API for v1 page and http command line auth."""
 import hashlib
 import flask
-import insta485
+import leaseAnn
 
 
 def check_auth(username, password):
     """Check if a username / password combination is valid."""
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
     cur = connection.execute(
         'SELECT password FROM users WHERE username=?', (username,)
     )
@@ -57,7 +57,7 @@ def requires_auth():
     return logname
 
 
-@insta485.app.route('/api/v1/')
+@leaseAnn.app.route('/api/v1/')
 def get_service_list():
     """Return a list of services available."""
     # no login check
@@ -75,5 +75,5 @@ def get_authenticated_db_connection():
     logname = requires_auth()
     if not logname:
         return None, raise_forbidden()
-    connection = insta485.model.get_db()
+    connection = leaseAnn.model.get_db()
     return logname, connection
