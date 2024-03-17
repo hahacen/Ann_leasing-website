@@ -21,23 +21,8 @@ The Ann Arbor Student Sublease Platform is a web-based application that allows s
 - **Regulatory Agencies**: Entities governing subleasing, housing standards, and online platforms.
 - **Educational Institutions**: Universities with vested interests in student housing options.
 
-## Expected Deliverables
-
-- **Initial Deliverable**: A web platform tailored for Ann Arbor student apartments, focusing on basic search, list functionalities, user and database management, data privacy, and security measures.
-- **Stretch Goals**: Virtual tour capabilities, a rating and review system, advanced matching algorithms, and a mobile application version.
 
 ### Scope
-
-#### In Scope
-
-- Development of the web platform with basic functionalities.
-- Basic UI/UX design.
-- User and database management.
-
-#### Out of Scope
-
-- Financial transactions for subleases.
-- Legal issues related to leasing.
 
 ## Technologies & Research Methods
 
