@@ -7,6 +7,22 @@ Welcome to the GitHub repository for the Ann Arbor Student Sublease Platform. Th
 The Ann Arbor Student Sublease Platform is a web-based application that allows students to easily find or list sublease opportunities. This platform is specifically tailored for the student community in Ann Arbor, focusing on the unique aspects of student living and housing needs. Whether you are looking to sublet your apartment or searching for accommodation, our platform aims to provide a comprehensive and user-friendly service.
 
 ### Website Overview
+- **In the home page, we listed the popular apartments in Ann Arbor by north/central campus, and when you click on the apartment, you will get a list of available apartments for you to lease!
+![homepage](https://github.com/hahacen/Ann_leasing-website/assets/103203631/716ce505-98b3-4ac2-9e04-e54954c95091)
+
+- ** In this apartment listing, as you click view more, you will see a card containing the details of this apartment, including the contacts, more pictures...
+![apartment-detail](https://github.com/hahacen/Ann_leasing-website/assets/103203631/9001f8d2-9428-40d1-8a64-df958bf3a28f)
+
+- ** Besides finding your dream apartment, you can also post your apartment if you want to sublet it. You will need to fill in this form, and you will see the lease you posted
+![post_lease](https://github.com/hahacen/Ann_leasing-website/assets/103203631/9514260b-4242-42cc-9406-8a37daaa3f76)
+
+- ** In our website, you can like the lease option for future comparison from the menu. 
+![show-css](https://github.com/hahacen/Ann_leasing-website/assets/103203631/cd6874f1-0bd5-4ab6-a46d-325d87012934)
+
+- ** User experience is our top priority, and you can set up your account and login to save your personal preference. 
+![edit_account](https://github.com/hahacen/Ann_leasing-website/assets/103203631/d01ee248-1c38-4ce7-87bc-868b14b8ba4a)
+
+
 
 ### Key Features
 
