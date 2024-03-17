@@ -40,8 +40,6 @@ The Ann Arbor Student Sublease Platform is a web-based application that allows s
 - **Educational Institutions**: Universities with vested interests in student housing options.
 
 
-### Scope
-
 ## Technologies & Research Methods
 
 - **Frontend Development**: React or Angular.
