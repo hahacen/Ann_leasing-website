@@ -6,6 +6,8 @@ Welcome to the GitHub repository for the Ann Arbor Student Sublease Platform. Th
 
 The Ann Arbor Student Sublease Platform is a web-based application that allows students to easily find or list sublease opportunities. This platform is specifically tailored for the student community in Ann Arbor, focusing on the unique aspects of student living and housing needs. Whether you are looking to sublet your apartment or searching for accommodation, our platform aims to provide a comprehensive and user-friendly service.
 
+### Website Overview
+
 ### Key Features
 
 - **Listing and Searching**: Users can list rooms for subleasing or search for available rooms, including the submission of specific room requests.
