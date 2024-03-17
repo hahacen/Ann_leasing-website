@@ -61,9 +61,11 @@ We welcome contributions from students, faculty members, web development and rea
 ### Getting Started
 
 1. Clone the repo: `git clone https://github.com/hahacen/Ann_leasing-website.git`
-2. Navigate to the project directory: `cd `
-3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
+2. Navigate to the project directory: `cd leaseAnn`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Set the dataset: `./leaseAnnDB`
+5. Start the development server: `./leaseAnnRun`
+   
 
 ### Reporting Issues
 
