@@ -2,6 +2,14 @@
 
 Welcome to the GitHub repository for the Ann Arbor Student Sublease Platform. This platform is designed to address the unique housing needs of students in Ann Arbor by offering a specialized subleasing solution that caters to late and short-term accommodation requests. Our mission is to simplify the subleasing process, making it more efficient and accessible for students.
 
+### Getting Started
+
+1. Clone the repo: `git clone https://github.com/hahacen/Ann_leasing-website.git`
+2. Navigate to the project directory: `cd leaseAnn`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Set the dataset: `./leaseAnnDB`
+5. Start the development server: `./leaseAnnRun`
+   
 ## Project Overview
 
 The Ann Arbor Student Sublease Platform is a web-based application that allows students to easily find or list sublease opportunities. This platform is specifically tailored for the student community in Ann Arbor, focusing on the unique aspects of student living and housing needs. Whether you are looking to sublet your apartment or searching for accommodation, our platform aims to provide a comprehensive and user-friendly service.
@@ -58,14 +66,6 @@ While platforms like Zillow and Apartments.com exist, our platform's tailored ap
 ## Contributing
 
 We welcome contributions from students, faculty members, web development and real estate professionals. Whether it's code, ideas for features, or feedback on the platform's usability, your input is invaluable.
-
-### Getting Started
-
-1. Clone the repo: `git clone https://github.com/hahacen/Ann_leasing-website.git`
-2. Navigate to the project directory: `cd leaseAnn`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Set the dataset: `./leaseAnnDB`
-5. Start the development server: `./leaseAnnRun`
    
 
 ### Reporting Issues
